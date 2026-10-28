@@ -60,5 +60,23 @@ namespace EFCorePractice.Services
                 Console.WriteLine("Department updated successfully!");
             }
         }
+        public void DeleteDepartment(int id)
+        {
+            using (var context = new AppDbContext())
+            {
+                Department? department = context.Departments.Find(id);
+
+                if (department == null)
+                {
+                    Console.WriteLine("Department not found!");
+                    return;
+                }
+
+                context.Departments.Remove(department);
+                context.SaveChanges();
+
+                Console.WriteLine("Department deleted successfully!");
+            }
+        }
     }
 }

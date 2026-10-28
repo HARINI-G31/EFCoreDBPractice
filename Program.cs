@@ -12,6 +12,7 @@ namespace EFCorePractice
             Console.WriteLine("1. Add Department");
             Console.WriteLine("2. Display All Departments");
             Console.WriteLine("3. Update Department");
+            Console.WriteLine("4. Delete Department");
 
             Console.Write("Enter your choice: ");
             int choice = int.Parse(Console.ReadLine() ?? "0");
@@ -47,6 +48,11 @@ namespace EFCorePractice
                     Console.Write("Is Active (true/false): ");
                     bool newIsActive = bool.Parse(Console.ReadLine() ?? "false");
                     service.UpdateDepartment(id, newName, newLocation, newIsActive);
+                    break;
+                case 4:
+                    Console.Write("Enter Department ID to delete: ");
+                    int deleteId = int.Parse(Console.ReadLine() ?? "0");
+                    service.DeleteDepartment(deleteId);
                     break;
 
                 default:
