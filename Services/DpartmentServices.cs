@@ -39,5 +39,26 @@ namespace EFCorePractice.Services
                 }
             }
         }
+        public void UpdateDepartment(int id, string name, string location, bool isActive)
+        {
+            using (var context = new AppDbContext())
+            {
+                Department? department = context.Departments.Find(id);
+
+                if (department == null)
+                {
+                    Console.WriteLine("Department not found!");
+                    return;
+                }
+
+                department.DepartmentName = name;
+                department.Location = location;
+                department.IsActive = isActive;
+
+                context.SaveChanges();
+
+                Console.WriteLine("Department updated successfully!");
+            }
+        }
     }
 }
