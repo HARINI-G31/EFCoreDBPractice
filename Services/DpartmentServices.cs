@@ -23,5 +23,21 @@ namespace EFCorePractice.Services
                 Console.WriteLine("Department added successfully!");
             }
         }
+        public void GetAllDepartments()
+        {
+            using (var context = new AppDbContext())
+            {
+                List<Department> departments = context.Departments.ToList();
+
+                foreach (Department department in departments)
+                {
+                    Console.WriteLine($"Department ID: {department.DepartmentId}");
+                    Console.WriteLine($"Department Name: {department.DepartmentName}");
+                    Console.WriteLine($"Location: {department.Location}");
+                    Console.WriteLine($"Is Active: {department.IsActive}");
+                    Console.WriteLine("--------------------------");
+                }
+            }
+        }
     }
 }
